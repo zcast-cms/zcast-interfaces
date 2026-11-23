@@ -7,6 +7,7 @@ pub const IFACE_EDITOR: &str = "zcast:ui/editor";
 pub const IFACE_SEARCH: &str = "zcast:search/provider";
 pub const IFACE_AUTH: &str = "zcast:auth/provider";
 pub const IFACE_POPOVER: &str = "zcast:ui/popover";
+pub const IFACE_CMD_K: &str = "zcast:ui/cmd-k";
 pub const IFACE_IO: &str = "zcast:io/markdown";
 
 /// Deterministic execution stage for hook pipelines (DEC-16).
