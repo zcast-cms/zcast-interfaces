@@ -79,4 +79,47 @@ pub trait AuthProvider: Send + Sync {
         let _ = (site_title, color_mode, error, next);
         Html::empty()
     }
+
+    /// Whether this auth provider uses scanner-safe one-time magic links.
+    fn supports_magic_link(&self) -> bool {
+        false
+    }
+
+    /// Request a one-time magic login link for `email`.
+    /// Returns `Ok(Some(url))` if a link was minted (e.g. for CLI/log delivery),
+    /// or `Ok(None)` when the email does not match (without leaking existence).
+    async fn request_magic_link(
+        &self,
+        email: &str,
+        base_url: &str,
+    ) -> Result<Option<String>, AuthError> {
+        let _ = (email, base_url);
+        Err(AuthError::Unauthorized)
+    }
+
+    /// Check whether a magic-link token is currently valid WITHOUT consuming it
+    /// (protects against email security scanners pre-fetching `GET` URLs).
+    async fn peek_magic_token(&self, token: &str) -> Result<bool, AuthError> {
+        let _ = token;
+        Ok(false)
+    }
+
+    /// Consume a one-time magic-link token on `POST`, returning a fresh session token on success.
+    async fn consume_magic_token(&self, token: &str) -> Result<Option<String>, AuthError> {
+        let _ = token;
+        Ok(None)
+    }
+
+    /// Render the scanner-safe confirmation page for `GET /_zcast/auth/magic?token=...`.
+    fn render_magic_confirm_page(
+        &self,
+        site_title: &str,
+        color_mode: ThemeColorMode,
+        token: &str,
+        valid: bool,
+        next: &str,
+    ) -> Html {
+        let _ = (site_title, color_mode, token, valid, next);
+        Html::empty()
+    }
 }

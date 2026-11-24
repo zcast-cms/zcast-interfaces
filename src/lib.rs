@@ -1,6 +1,7 @@
 pub mod auth;
 pub mod editor;
 pub mod hooks;
+pub mod io;
 pub mod links;
 pub mod module;
 pub mod search;
@@ -12,6 +13,7 @@ pub mod ui;
 pub use auth::{AuthError, AuthProvider, AuthSession};
 pub use editor::EditorProvider;
 pub use hooks::{HtmlRenderHook, NoteEvent, NoteLifecycleHook};
+pub use io::{ExportSummary, ImportSummary, IoError, NoteExporter, NoteImporter};
 pub use links::{LinkError, LinkParser, ParsedLink, ResolvedLink, ResolvedTarget};
 pub use module::{
     HookStage, IFACE_AUTH, IFACE_CMD_K, IFACE_EDITOR, IFACE_IO, IFACE_LINKS, IFACE_POPOVER,
