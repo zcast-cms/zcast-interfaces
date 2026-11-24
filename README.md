@@ -1,4 +1,6 @@
-# `zcast-interfaces`
+<p align="center">
+  <img src="assets/logo-banner.svg" alt="zcast-interfaces — Versioned Rust contracts & Note primitive for zcast" width="880" />
+</p>
 
 Versioned Rust interface contracts and core `Note` primitive for the [`zcast`](https://github.com/zcast-cms/zcast) modular Zettelkasten CMS.
 
